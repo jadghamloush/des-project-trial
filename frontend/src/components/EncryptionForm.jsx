@@ -119,7 +119,7 @@ const EncryptionForm = () => {
         };
 
         const response = await axios.post(
-          `${API_URL}/encrypt`,
+          `${apiUrl}/encrypt`,
           formData,
           config
         );
