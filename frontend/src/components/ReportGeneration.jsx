@@ -14,7 +14,7 @@ const ReportGeneration = ({ reportData }) => {
     setError('');
     try {
       const response = await axios.post(
-        'http://localhost:5000/generate_report',
+        'http://3.133.100.68:5000/generate_report',
         reportData,
         { responseType: 'blob' } // Important for handling binary data
       );

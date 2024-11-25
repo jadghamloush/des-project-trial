@@ -117,7 +117,7 @@ const EncryptionForm = () => {
         };
 
         const response = await axios.post(
-          'http://localhost:5000/encrypt',
+          'http://3.133.100.68:5000/encrypt',
           formData,
           config
         );

@@ -9,6 +9,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './DecryptionForm.css';
 
+url = "http://3.133.100.68:5000/"
+
 const DecryptionForm = () => {
   const [decryptedText, setDecryptedText] = useState('');
   const [decryptedHex, setDecryptedHex] = useState('');
@@ -88,7 +90,7 @@ const DecryptionForm = () => {
           },
         };
 
-        const response = await axios.post('http://localhost:5000/decrypt', formData, config);
+        const response = await axios.post('http://3.133.100.68:5000/decrypt', formData, config);
 
         if (response.data.success) {
           setDecryptedHex(response.data.decrypted_hex);
