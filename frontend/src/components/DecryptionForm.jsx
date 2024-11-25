@@ -9,7 +9,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './DecryptionForm.css';
 
-url = "http://3.133.100.68:5000/"
+
 
 const DecryptionForm = () => {
   const [decryptedText, setDecryptedText] = useState('');
