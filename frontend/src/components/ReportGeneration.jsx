@@ -18,7 +18,7 @@ const ReportGeneration = ({ reportData }) => {
     setError('');
     try {
       const response = await axios.post(
-        `${API_URL}/generate_report`,
+        'https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/generate_report',
         reportData,
         { responseType: 'blob' } // Important for handling binary data
       );

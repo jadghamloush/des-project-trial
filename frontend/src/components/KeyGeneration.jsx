@@ -28,7 +28,7 @@ const KeyGeneration = () => {
     setError("");
     setLoading(true);
     try {
-      const response = await axios.get(`${API_URL}/generate_key`);
+      const response = await axios.get('https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/generate_key');
       if (response.data.key_hex && response.data.key_binary) {
         setKeyHex(response.data.key_hex);
         setKeyBinary(response.data.key_binary);
