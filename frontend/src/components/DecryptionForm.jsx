@@ -90,7 +90,7 @@ const DecryptionForm = () => {
           },
         };
 
-        const response = await axios.post('http://3.133.100.68:5000/decrypt', formData, config);
+        const response = await axios.post(`${API_URL}/decrypt`, formData, config);
 
         if (response.data.success) {
           setDecryptedHex(response.data.decrypted_hex);

@@ -17,6 +17,8 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './EncryptionForm.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
+
 const EncryptionForm = () => {
   const [ciphertext, setCiphertext] = useState('');
   const [roundDetails, setRoundDetails] = useState([]);
@@ -117,7 +119,7 @@ const EncryptionForm = () => {
         };
 
         const response = await axios.post(
-          'http://3.133.100.68:5000/encrypt',
+          `${API_URL}/encrypt`,
           formData,
           config
         );
