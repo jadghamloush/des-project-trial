@@ -1,0 +1,94 @@
+/* decryptionform.css */
+
+/* Decryption Form Container */
+.decryption-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 182, 193, 0.1));
+  padding: 0 20px;
+}
+
+/* Decryption Form Card */
+.decryption-card {
+  background-color: var(--card-bg);
+  color: #333;
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: 0 8px 20px var(--shadow-color);
+  width: 100%;
+  max-width: 650px;
+}
+
+/* Fun Header */
+h2 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+/* Inputs and Buttons */
+.input-select,
+.input-field,
+.input-file {
+  background-color: var(--input-bg);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 12px;
+  transition: all 0.3s ease;
+}
+
+.input-select:focus,
+.input-field:focus,
+.input-file:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
+}
+
+.clear-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.clear-btn:hover {
+  background-color: #ff5e5e;
+}
+
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: var(--button-hover);
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+}
+
+.decrypted-hex {
+  color: var(--success-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.card .form-control.is-invalid {
+  border-color: var(--error-color);
+}
+
+.card .form-control.is-invalid:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 5px var(--error-color);
+}

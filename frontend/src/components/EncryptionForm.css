@@ -1,0 +1,150 @@
+/* encryptionform.css */
+
+/* Encryption Form Container */
+.encryption-form-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* Encryption Form Card */
+.encryption-card {
+  background-color: var(--card-bg);
+  border-radius: var(--border-radius);
+  padding: 40px;
+  box-shadow: 0 8px 20px var(--card-shadow);
+  width: 100%;
+  max-width: 700px; /* Increased max-width for better content space */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.encryption-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px var(--card-shadow);
+}
+
+/* Fun Header */
+h2 {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* Inputs and Buttons */
+.input-select,
+.input-field,
+.input-file {
+  background-color: var(--input-bg);
+  border: 1px solid #ddd;
+  border-radius: var(--border-radius);
+  padding: 14px;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+.input-select:focus,
+.input-field:focus,
+.input-file:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 8px var(--primary-color);
+  outline: none;
+}
+
+/* Clear Button */
+.clear-btn {
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.clear-btn:hover {
+  background-color: #ff5e5e;
+}
+
+/* Submit Button */
+.submit-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  padding: 14px;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+  width: 100%;
+}
+
+.submit-btn:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.02);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+.submit-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Ciphertext Display */
+.ciphertext {
+  color: var(--success-color);
+  font-weight: bold;
+  font-size: 1.2rem;
+  word-wrap: break-word;
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* Form Validation Feedback */
+.card .form-control.is-invalid {
+  border-color: var(--error-color);
+}
+
+.card .form-control.is-invalid:focus {
+  border-color: var(--error-color);
+  box-shadow: 0 0 5px var(--error-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .encryption-card {
+    padding: 30px 20px;
+  }
+
+  h2 {
+    font-size: 2rem;
+  }
+
+  .input-select,
+  .input-field,
+  .input-file {
+    padding: 12px;
+    font-size: 0.95rem;
+  }
+
+  .clear-btn,
+  .submit-btn {
+    font-size: 0.9rem;
+    padding: 10px;
+  }
+
+  .ciphertext {
+    font-size: 1rem;
+  }
+}

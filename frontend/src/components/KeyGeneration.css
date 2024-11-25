@@ -1,0 +1,165 @@
+/* Updated Variables */
+:root {
+  --primary-color: #6a5acd;
+  --secondary-color: #ff69b4;
+  --background-color: #f7f7f7;
+  --button-hover: #5f2b8f;
+  --card-bg: #ffffff;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --input-bg: #f1f3f5;
+  --text-color: #333;
+}
+
+/* Key Generation Container */
+.key-generation-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, rgba(95, 39, 205, 0.1), rgba(29, 209, 161, 0.1));
+  padding: 20px;
+}
+
+/* Key Generation Card */
+.key-generation-card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: 15px;
+  padding: 35px;
+  box-shadow: 0 10px 20px var(--shadow-color);
+  width: 100%;
+  max-width: 700px;
+  transition: transform 0.3s ease;
+}
+
+.key-generation-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Card Header */
+.key-generation-card h2 {
+  font-family: "Arial", sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+/* Center Generate Key Button */
+.generate-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  font-weight: bold;
+  font-size: 1.3rem;
+  padding: 14px 28px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.generate-btn:hover {
+  background-color: var(--button-hover);
+}
+
+.generate-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Input Field and Buttons Styling */
+.key-display {
+  flex: 1;
+  background-color: var(--input-bg);
+  border: 1px solid var(--text-color);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 1rem;
+  color: var(--text-color);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.key-display:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 5px var(--primary-color);
+}
+
+.copy-btn,
+.download-btn {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.copy-btn:hover,
+.download-btn:hover {
+  background-color: var(--button-hover);
+}
+
+/* Extend Input Field and Align Buttons */
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.key-display {
+  width: 70%; /* Longer input field */
+}
+
+.copy-btn,
+.download-btn {
+  width: auto; /* Buttons at the end */
+}
+
+/* Row and Alignment Fix */
+.row.align-items-center {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.row.align-items-center .col-auto {
+  flex: 0 0 auto;
+  padding-right: 10px;
+}
+
+.row.align-items-center .col {
+  flex: 1;
+}
+
+/* Increase font size for labels */
+.larger-text {
+  font-size: 1.2rem;
+  color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .key-generation-card {
+    padding: 20px;
+  }
+
+  .generate-btn {
+    width: 100%; /* Full width on smaller screens */
+    padding: 14px;
+  }
+
+  .key-display {
+    width: 100%; /* Full width for input fields */
+  }
+
+  .copy-btn,
+  .download-btn {
+    margin-left: 5px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+  }
+}

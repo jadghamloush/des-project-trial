@@ -1,0 +1,135 @@
+/* rounddetails.css */
+
+/* Round Details Header */
+.round-details-header {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Accordion Styling */
+.detailed-round-accordion {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item {
+  border: none;
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: var(--accordion-hover);
+  color: var(--text-color); /* Ensured text color uses variable */
+}
+
+.accordion-button {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border: none;
+  padding: 10px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important; /* Keeps text white for contrast */
+  border-radius: 6px;
+}
+
+.accordion-button:not(.collapsed):hover {
+  background-color: var(--hover-color) !important;
+}
+
+.accordion-body {
+  background-color: var(--accordion-bg);
+  color: var(--text-color);
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.accordion-body table {
+  margin-bottom: 0;
+}
+
+/* Table Styling */
+table th, table td {
+  color: var(--text-color);
+  background-color: var(--accordion-bg);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+[data-theme='dark'] table th, 
+[data-theme='dark'] table td {
+  background-color: var(--accordion-bg);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .round-details-header {
+    font-size: 1.5rem;
+  }
+
+  .accordion-header {
+    font-size: 1rem;
+  }
+
+  .accordion-body {
+    font-size: 0.95rem;
+  }
+}
+
+/* Custom Tooltip Styling */
+.custom-tooltip {
+  background-color: var(--tooltip-bg) !important;
+  color: var(--tooltip-text) !important;
+  font-size: 0.9rem;
+  border-radius: 8px !important;
+  padding: 8px 12px !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 200px;
+}
+
+.custom-tooltip::before {
+  border-top-color: var(--tooltip-bg) !important;
+}
+
+/* Tooltip Arrow Customization */
+.tooltip-arrow::before {
+  border-top-color: var(--tooltip-bg) !important;
+  border-top-width: 8px !important;
+}
+
+/* Tooltip Transition for Smooth Appearance */
+.custom-tooltip {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Tooltip Trigger Styling */
+.tooltip-trigger {
+  cursor: pointer;
+  text-decoration: underline dotted;
+  position: relative;
+}
+
+.tooltip-trigger:hover {
+  color: var(--primary-color);
+}

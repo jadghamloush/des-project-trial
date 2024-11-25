@@ -1,0 +1,103 @@
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+
+    /* Tooltip Variables */
+    --tooltip-bg: rgba(0, 0, 0, 0.85); /* Dark background for light theme */
+    --tooltip-text: #ffffff;  
+}
+
+/* Light Theme */
+:root {
+  --background-color: #f8f9fa;
+  --text-color: #212529;
+  --card-bg: #ffffff;
+  --card-shadow: rgba(0, 0, 0, 0.1);
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --secondary-color: #6c757d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+}
+
+/* Dark Theme */
+[data-theme='dark'] {
+  --background-color: #121212;
+  --text-color: #e0e0e0;
+  --card-bg: #1e1e1e;
+  --card-shadow: rgba(0, 0, 0, 0.5);
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --secondary-color: #adb5bd;
+  --success-color: #198754;
+  --danger-color: #dc3545;
+
+  --tooltip-bg: rgba(255, 255, 255, 0.9);
+  --tooltip-text: #000000;
+}
+
+/* Container Offset */
+.main-content {
+  padding-top: 64px; /* Matches the navbar height */
+}
+
+
+
+/* Button Transitions */
+.nav-link,
+.btn,
+.dropdown-item {
+  transition: all 0.3s ease;
+}
+
+.nav-link:hover,
+.btn:hover,
+.dropdown-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Accordion Transitions */
+.accordion-button {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #007bff !important;
+  color: #ffffff !important;
+}
+
+.accordion-body {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Theme Toggle Button */
+.theme-toggle-btn {
+  display: flex;
+  align-items: center;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Navbar Transition */
+.navbar-menu {
+  transition: left 0.3s ease;
+}
+
+/* Smooth transitions for background color changes */
+[data-theme='dark'] .theme-toggle-btn {
+  background-color: #333;
+  color: var(--text-color);
+}
+
+[data-theme='dark'] .theme-toggle-btn:hover {
+  background-color: #555;
+}

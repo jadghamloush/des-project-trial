@@ -1,0 +1,63 @@
+:root {
+  --card-bg: #ffffff;
+  --text-color: #000000;
+  --primary-color: #007bff;
+  --primary-hover: #0056b3;
+  --background-color: #f4f4f4;
+  --link-color: #007bff;
+  --link-hover-color: #0056b3;
+  --border-radius: 10px;
+  --shadow: rgba(0, 0, 0, 0.1);
+}
+
+/* Dark Mode Variables */
+[data-theme='dark'] {
+  --card-bg: #1e1e1e;
+  --text-color: #f9f9f9;
+  --primary-color: #0d6efd;
+  --primary-hover: #0b5ed7;
+  --background-color: #121212;
+  --link-color: #0d6efd;
+  --link-hover-color: #0b5ed7;
+}
+
+/* Global Styles */
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Card Styling */
+.card {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 8px var(--shadow);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Links */
+a {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Buttons */
+.btn {
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+  color: white;
+}
+

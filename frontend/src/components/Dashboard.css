@@ -1,0 +1,68 @@
+/* Custom Variables */
+:root {
+  --primary-color: #6a5acd;
+  --background-color: #f7f7f7;
+  --button-hover: #5f2b8f;
+  --text-color: #333;
+  --chart-bg: #f9f9f9;
+  --spinner-color: #6a5acd;
+  --tooltip-bg: rgba(0, 0, 0, 0.8);
+}
+
+/* Dashboard Card */
+.dashboard-card {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-5px);
+}
+
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  color: var(--primary-color);
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+
+/* Loading Spinner */
+.spinner {
+  color: var(--spinner-color);
+}
+
+/* Chart Styling */
+.line-chart {
+  background-color: var(--chart-bg);
+  border-radius: 15px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tooltip Customization */
+.recharts-tooltip-wrapper {
+  background-color: var(--tooltip-bg) !important;
+  color: white !important;
+  border-radius: 4px;
+  padding: 8px;
+  font-size: 1rem;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .line-chart {
+    width: 100% !important;
+    height: 300px !important;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+}

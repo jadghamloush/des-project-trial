@@ -1,0 +1,81 @@
+.round-details-header {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.detailed-round-accordion {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item {
+  border: none;
+  margin-bottom: 10px;
+}
+
+.accordion-header {
+  background-color: var(--card-bg);
+  color: var(--text-color);
+  font-weight: 600;
+  font-size: 1.1rem;
+  padding: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.accordion-header:hover {
+  background-color: var(--accordion-hover);
+  color: #fff;
+}
+
+.accordion-button {
+  background-color: var(--card-bg) !important;
+  color: var(--text-color) !important;
+  border: none;
+  padding: 10px;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: var(--accent-color) !important;
+  color: #ffffff !important;
+  border-radius: 6px;
+}
+
+.accordion-button:not(.collapsed):hover {
+  background-color: var(--hover-color) !important;
+}
+
+.accordion-body {
+  background-color: var(--accordion-bg);
+  color: var(--text-color);
+  padding: 15px;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+.accordion-body table {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .round-details-header {
+    font-size: 1.5rem;
+  }
+
+  .accordion-header {
+    font-size: 1rem;
+  }
+
+  .accordion-body {
+    font-size: 0.95rem;
+  }
+}
