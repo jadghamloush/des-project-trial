@@ -14,6 +14,9 @@ import {
 import axios from "axios";
 import "./KeyGeneration.css";
 
+const API_URL = process.env.REACT_APP_API_URL;
+
+
 const KeyGeneration = () => {
   const [keyHex, setKeyHex] = useState("");
   const [keyBinary, setKeyBinary] = useState("");

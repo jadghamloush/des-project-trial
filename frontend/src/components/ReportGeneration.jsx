@@ -5,6 +5,10 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import './ReportGeneration.css';
 
+
+const API_URL = process.env.REACT_APP_API_URL;
+
+
 const ReportGeneration = ({ reportData }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');

@@ -9,6 +9,7 @@ import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './DecryptionForm.css';
 
+const API_URL = process.env.REACT_APP_API_URL;
 
 
 const DecryptionForm = () => {
