@@ -1,4 +1,4 @@
-// src/components/EncryptionForm.jsx
+// frontend/src/components/EncryptionForm.jsx
 
 import React, { useState } from 'react';
 import {
@@ -16,8 +16,7 @@ import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './EncryptionForm.css';
-
-const API_URL = process.env.REACT_APP_API_URL;
+import { hexToBin, hexToBytes } from '../utils/conversions'; // Import utility functions
 
 const EncryptionForm = () => {
   const [ciphertext, setCiphertext] = useState('');
@@ -75,7 +74,7 @@ const EncryptionForm = () => {
               'Only .txt files are allowed',
               (value) => {
                 if (value) {
-                  return value.type === 'text/plain';
+                  return ['text/plain'].includes(value.type);
                 }
                 return false;
               }
@@ -119,7 +118,7 @@ const EncryptionForm = () => {
         };
 
         const response = await axios.post(
-          'https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/encrypt',
+          'http://localhost:5000/encrypt',
           formData,
           config
         );
@@ -128,11 +127,29 @@ const EncryptionForm = () => {
           setCiphertext(response.data.ciphertext);
           setRoundDetails(response.data.round_details);
           setTimeTaken(response.data.time_taken);
+
+          // Process round_details to include sbox_output
+          const processedRoundDetails = response.data.round_details.map((round) => {
+            const sbox_output = round.sbox_details
+              .map((sbox) => `${sbox.sbox}:${sbox.output}`)
+              .join(', ');
+            return { ...round, sbox_output };
+          });
+
+          // Prepare key information
+          const keyHex = values.key;
+          const keyBinary = hexToBin(values.key);
+          const keyBytes = hexToBytes(values.key);
+          const keyBase64 = btoa(String.fromCharCode(...keyBytes));
+
           setReportData({
             reportType: 'Encryption',
-            roundDetails: response.data.round_details,
+            roundDetails: processedRoundDetails,
             timeTaken: response.data.time_taken,
             resultHex: response.data.ciphertext,
+            keyHex: keyHex,
+            keyBinary: keyBinary,
+            keyBase64: keyBase64,
           });
         } else {
           setError(response.data.message || 'Encryption failed.');
@@ -257,7 +274,7 @@ const EncryptionForm = () => {
                 variant="outline-secondary"
                 onClick={() => formik.setFieldValue('key', '')}
                 className="clear-btn"
-                type="button" // Changed to button to prevent form submission
+                type="button" // Ensure it's a button to prevent form submission
               >
                 Clear
               </Button>
@@ -303,7 +320,7 @@ const EncryptionForm = () => {
             <h4 className="ciphertext">
               Ciphertext: <span>{ciphertext}</span>
             </h4>
-            <h5 className="text-center">Time Taken: {timeTaken} seconds</h5>
+            <h5>Time Taken: {timeTaken} milliseconds</h5>
             <RoundDetails rounds={roundDetails} />
             {reportData && <ReportGeneration reportData={reportData} />}
           </div>

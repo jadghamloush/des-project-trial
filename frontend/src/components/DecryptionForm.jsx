@@ -1,16 +1,22 @@
-// src/components/DecryptionForm.jsx
+// frontend/src/components/DecryptionForm.jsx
 
 import React, { useState } from 'react';
-import { Button, Form, Card, InputGroup, FormControl, Alert, Spinner } from 'react-bootstrap';
+import {
+  Button,
+  Form,
+  Card,
+  InputGroup,
+  FormControl,
+  Alert,
+  Spinner,
+} from 'react-bootstrap';
 import RoundDetails from './RoundDetails';
 import ReportGeneration from './ReportGeneration';
 import axios from 'axios';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import './DecryptionForm.css';
-
-const API_URL = process.env.REACT_APP_API_URL;
-
+import { hexToBin, hexToBytes } from '../utils/conversions'; // Import utility functions
 
 const DecryptionForm = () => {
   const [decryptedText, setDecryptedText] = useState('');
@@ -61,6 +67,12 @@ const DecryptionForm = () => {
                 return ['text/plain'].includes(value.type);
               }
               return false;
+            })
+            .test('fileSize', 'File size too large (Max: 1MB)', (value) => {
+              if (value) {
+                return value.size <= 1 * 1024 * 1024; // 1MB
+              }
+              return false;
             });
         }
         return schema.notRequired();
@@ -91,18 +103,36 @@ const DecryptionForm = () => {
           },
         };
 
-        const response = await axios.post('https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/decrypt', formData, config);
+        const response = await axios.post('http://localhost:5000/decrypt', formData, config);
 
         if (response.data.success) {
           setDecryptedHex(response.data.decrypted_hex);
           setDecryptedText(response.data.decrypted_text);
           setRoundDetails(response.data.round_details);
           setTimeTaken(response.data.time_taken);
+
+          // Process round_details to include sbox_output
+          const processedRoundDetails = response.data.round_details.map((round) => {
+            const sbox_output = round.sbox_details
+              .map((sbox) => `${sbox.sbox}:${sbox.output}`)
+              .join(', ');
+            return { ...round, sbox_output };
+          });
+
+          // Prepare key information
+          const keyHex = values.key;
+          const keyBinary = hexToBin(values.key);
+          const keyBytes = hexToBytes(values.key);
+          const keyBase64 = btoa(String.fromCharCode(...keyBytes));
+
           setReportData({
             reportType: 'Decryption',
-            roundDetails: response.data.round_details,
+            roundDetails: processedRoundDetails,
             timeTaken: response.data.time_taken,
             resultHex: response.data.decrypted_hex,
+            keyHex: keyHex,
+            keyBinary: keyBinary,
+            keyBase64: keyBase64,
           });
         } else {
           setError(response.data.message || 'Decryption failed.');
@@ -121,6 +151,7 @@ const DecryptionForm = () => {
       <Card className="shadow-lg p-5 decryption-card">
         <h2 className="text-center text-primary mb-4">DES Decryption</h2>
         <Form onSubmit={formik.handleSubmit}>
+          {/* Input Format Selection */}
           <Form.Group controlId="inputFormat" className="mb-4">
             <Form.Label>Input Format</Form.Label>
             <Form.Control
@@ -149,6 +180,7 @@ const DecryptionForm = () => {
             ) : null}
           </Form.Group>
 
+          {/* Conditional Rendering Based on Input Format */}
           {formik.values.inputFormat !== 'file' ? (
             <Form.Group controlId="ciphertext" className="mb-4">
               <Form.Label>
@@ -202,6 +234,7 @@ const DecryptionForm = () => {
             </Form.Group>
           )}
 
+          {/* Key Input */}
           <Form.Group controlId="key" className="mb-4">
             <Form.Label>Key (16 Hex Characters)</Form.Label>
             <InputGroup>
@@ -231,12 +264,14 @@ const DecryptionForm = () => {
             </InputGroup>
           </Form.Group>
 
+          {/* Error Message */}
           {error && <Alert variant="danger">{error}</Alert>}
 
+          {/* Submit Button */}
           <Button
-            variant="success"
+            variant="primary"
             type="submit"
-            className="w-100 submit-btn"
+            className="submit-btn"
             disabled={formik.isSubmitting}
           >
             {formik.isSubmitting ? (
@@ -257,14 +292,21 @@ const DecryptionForm = () => {
           </Button>
         </Form>
 
-        {decryptedHex && (
+        {/* Decrypted Data Display */}
+        {(decryptedHex || decryptedText) && (
           <div className="mt-4">
-            <h4 className="decrypted-hex">
-              Decrypted Hex: <span>{decryptedHex}</span>
-            </h4>
-            <h5>Decrypted Text: {decryptedText}</h5>
-            <h5>Time Taken: {timeTaken} seconds</h5>
-            <RoundDetails rounds={roundDetails} processType="Decryption" />
+            {decryptedHex && (
+              <h4 className="decrypted-hex">
+                Decrypted Hex: <span>{decryptedHex}</span>
+              </h4>
+            )}
+            {decryptedText && (
+              <h4 className="decrypted-text">
+                Decrypted Text: <span>{decryptedText}</span>
+              </h4>
+            )}
+            <h5>Time Taken: {timeTaken} milliseconds</h5>
+            <RoundDetails rounds={roundDetails} />
             {reportData && <ReportGeneration reportData={reportData} />}
           </div>
         )}

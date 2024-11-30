@@ -1,4 +1,4 @@
-/* decryptionform.css */
+/* frontend/src/components/DecryptionForm.css */
 
 /* Decryption Form Container */
 .decryption-form-container {
@@ -78,6 +78,7 @@ h2 {
   background-color: #ccc;
 }
 
+/* Decrypted Data Display */
 .decrypted-hex {
   color: var(--success-color);
   font-weight: bold;

@@ -1,0 +1,277 @@
+/* src/components/DESQuizPage.css */
+
+/* Wrapper to center the quiz both horizontally and vertically */
+.quiz-page-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh; /* Full viewport height */
+    background-color: var(--background-color); /* Ensure background matches theme */
+    padding: 20px; /* Optional: padding to prevent overflow on small screens */
+  }
+  
+  /* Main Quiz Container */
+  .des-quiz-page {
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 25px;
+    background-color: var(--section-background);
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .des-quiz-page:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Quiz Title Styling */
+  .quiz-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2rem;
+    color: var(--text-color);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+  }
+  
+  .quiz-title::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background-color: var(--link-color);
+    margin: 8px auto 0;
+    border-radius: 2px;
+  }
+  
+  /* Quiz Section */
+  .quiz-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Question Count */
+  .question-count {
+    align-self: flex-start;
+    margin-bottom: 12px;
+    font-weight: 600;
+    color: var(--text-color);
+    font-size: 1rem;
+  }
+  
+  /* Question Text */
+  .question-text {
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: var(--text-color);
+    line-height: 1.6;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Options Container with Grid Layout */
+  .options-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 25px;
+  }
+  
+  /* Option Buttons Styling */
+  .option-button {
+    padding: 12px 20px;
+    background-color: var(--button-background);
+    color: var(--button-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .option-button:hover:not(:disabled) {
+    background-color: var(--button-hover);
+    transform: translateY(-2px);
+  }
+  
+  .option-button:active:not(:disabled) {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .option-button.correct {
+    background-color: #28a745;
+    color: #ffffff;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .option-button.incorrect {
+    background-color: #dc3545;
+    color: #ffffff;
+    animation: shake 0.5s ease-in-out;
+  }
+  
+  .option-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+  }
+  
+  /* Feedback Messages */
+  .feedback {
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    text-align: center;
+    font-weight: 600;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  .feedback.correct {
+    color: #28a745;
+  }
+  
+  .feedback.incorrect {
+    color: #dc3545;
+  }
+  
+  /* Next and Restart Buttons */
+  .next-button,
+  .restart-button {
+    padding: 12px 25px;
+    background-color: var(--link-color);
+    color: var(--button-text);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .next-button:hover,
+  .restart-button:hover {
+    background-color: var(--link-hover);
+    color: var(--button-text); /* Ensure text remains visible */
+    transform: translateY(-2px);
+  }
+  
+  .next-button:active,
+  .restart-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Score Section */
+  .score-section {
+    text-align: center;
+    color: var(--text-color);
+  }
+  
+  .score-section p {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Detailed Results */
+  .detailed-results {
+    margin-top: 20px;
+    text-align: left;
+  }
+  
+  .result-item {
+    background-color: var(--section-background);
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .result-item p {
+    margin: 5px 0;
+  }
+  
+  /* Progress Bar */
+  .progress-bar-container {
+    width: 100%;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    height: 12px;
+  }
+  
+  .progress-bar {
+    height: 12px;
+    background-color: var(--link-color);
+    width: 0%;
+    transition: width 0.5s ease-in-out;
+  }
+  
+  /* Timer Styling */
+  .timer {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  /* Animations */
+  @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* Responsive Design Enhancements */
+  @media (max-width: 768px) {
+    .des-quiz-page {
+      padding: 25px 20px;
+    }
+  
+    .quiz-title {
+      font-size: 1.8rem;
+    }
+  
+    .question-text {
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+  
+    .options-container {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+  
+    .option-button {
+      font-size: 0.95rem;
+      padding: 10px 18px;
+    }
+  
+    .next-button,
+    .restart-button {
+      font-size: 0.95rem;
+      padding: 10px 22px;
+    }
+  
+    .score-section p {
+      font-size: 1.3rem;
+    }
+  
+    .result-item {
+      padding: 12px;
+    }
+  }
+  

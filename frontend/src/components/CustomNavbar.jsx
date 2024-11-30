@@ -1,6 +1,8 @@
+// frontend/src/components/CustomNavbar.jsx
+
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FaHome, FaKey, FaLock, FaTachometerAlt, FaBars, FaTimes, FaFilePdf, FaInfoCircle } from 'react-icons/fa';  // Added FaInfoCircle for "DES Info"
+import { FaHome, FaKey, FaLock, FaTachometerAlt, FaBars, FaTimes, FaHistory, FaInfoCircle } from 'react-icons/fa';  // Added FaHistory
 import ThemeToggle from './ThemeToggle';
 import './CustomNavbar.css';
 
@@ -58,6 +60,12 @@ const CustomNavbar = () => {
           </NavLink>
           <NavLink to="/des-info" className="nav-link" onClick={handleNavLinkClick}> 
             <FaInfoCircle className="me-1" /> DES Info
+          </NavLink>
+          <NavLink to="/des-quiz" className="nav-link" onClick={handleNavLinkClick}>
+            <FaInfoCircle className='me-1' /> DES Quiz
+          </NavLink>
+          <NavLink to="/history" className="nav-link" onClick={handleNavLinkClick}> {/* Add History Link */}
+            <FaHistory className="me-1" /> History
           </NavLink>
         </div>
         <div className="navbar-right">

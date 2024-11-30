@@ -1,14 +1,4 @@
-/* Updated Variables */
-:root {
-  --primary-color: #6a5acd;
-  --secondary-color: #ff69b4;
-  --background-color: #f7f7f7;
-  --button-hover: #5f2b8f;
-  --card-bg: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.2);
-  --input-bg: #f1f3f5;
-  --text-color: #333;
-}
+/* frontend/src/components/KeyGeneration.css */
 
 /* Key Generation Container */
 .key-generation-container {
@@ -116,7 +106,9 @@
 
 .copy-btn,
 .download-btn {
-  width: auto; /* Buttons at the end */
+  margin-left: 5px;
+  padding: 10px 16px;
+  font-size: 0.9rem;
 }
 
 /* Row and Alignment Fix */

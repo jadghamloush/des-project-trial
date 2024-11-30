@@ -14,9 +14,6 @@ import {
 import axios from "axios";
 import "./KeyGeneration.css";
 
-const API_URL = process.env.REACT_APP_API_URL;
-
-
 const KeyGeneration = () => {
   const [keyHex, setKeyHex] = useState("");
   const [keyBinary, setKeyBinary] = useState("");
@@ -28,7 +25,7 @@ const KeyGeneration = () => {
     setError("");
     setLoading(true);
     try {
-      const response = await axios.get('https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/generate_key');
+      const response = await axios.get("http://localhost:5000/generate_key");
       if (response.data.key_hex && response.data.key_binary) {
         setKeyHex(response.data.key_hex);
         setKeyBinary(response.data.key_binary);
@@ -151,6 +148,36 @@ const KeyGeneration = () => {
                  <Button
                    variant="outline-secondary"
                    onClick={() => downloadKey(keyBinary, "binary")}
+                   className="download-btn"
+                 >
+                   Download
+                 </Button>
+               </InputGroup>
+             </div>
+           </div>
+
+           {/* Base64 Key */}
+           <div className="row align-items-center mt-3">
+             <span className="col-auto fw-bold larger-text">Base64:</span>
+             <div className="col">
+               <InputGroup>
+                 <FormControl
+                   type="text"
+                   value={keyBase64}
+                   readOnly
+                   className="text-center key-display"
+                   placeholder="Base64 Key"
+                 />
+                 <Button
+                   variant="outline-secondary"
+                   onClick={() => copyToClipboard(keyBase64, "Base64")}
+                   className="copy-btn"
+                 >
+                   Copy
+                 </Button>
+                 <Button
+                   variant="outline-secondary"
+                   onClick={() => downloadKey(keyBase64, "base64")}
                    className="download-btn"
                  >
                    Download

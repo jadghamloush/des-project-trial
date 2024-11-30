@@ -15,7 +15,9 @@ from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 import magic  # For MIME type detection
 import logging
-import base64  # Import base64 for encoding
+import base64
+from OpenSSL import SSL
+import os
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -93,11 +95,11 @@ def request_entity_too_large(error):
     return jsonify({'success': False, 'message': 'File is too large. Maximum allowed size is 1MB.'}), 413
 
 
-@app.route('/health', methods=['GET'])
-def health():
-    return "OK"
 
 
+@app.route('/test')
+def test():
+    return jsonify({"message": "Backend is working!"})
 
 @app.route('/encrypt', methods=['POST'])
 @limiter.limit("10 per minute")  # Example: 10 requests per minute
@@ -495,3 +497,11 @@ def generate_report():
     except Exception as e:
         logger.error(f"Report generation failed: {str(e)}")
         return jsonify({'message': f'Failed to generate report: {str(e)}'}), 500
+
+
+if __name__ == '__main__':
+    
+    app.run(
+        host='0.0.0.0',
+        port=5000,
+    )
