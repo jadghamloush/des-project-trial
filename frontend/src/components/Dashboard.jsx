@@ -13,7 +13,7 @@ const Dashboard = () => {
     const fetchMetrics = async  () => {
       try{
         setLoading(true);
-        const response = await fetch('http://127.0.0.1:5000/dashboard');
+        const response = await fetch('https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/dashboard');
         const data = await response.json();
 
         if (data.success) {

@@ -118,7 +118,7 @@ const EncryptionForm = () => {
         };
 
         const response = await axios.post(
-          'http://localhost:5000/encrypt',
+          'https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/encrypt',
           formData,
           config
         );

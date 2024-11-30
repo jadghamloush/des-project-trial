@@ -27,7 +27,7 @@ const Chatbot = () => {
     ]);
 
     try {
-      const response = await fetch("http://localhost:5000/chat", {
+      const response = await fetch("https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

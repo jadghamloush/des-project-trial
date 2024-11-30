@@ -103,7 +103,7 @@ const DecryptionForm = () => {
           },
         };
 
-        const response = await axios.post('http://localhost:5000/decrypt', formData, config);
+        const response = await axios.post('https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/decrypt', formData, config);
 
         if (response.data.success) {
           setDecryptedHex(response.data.decrypted_hex);

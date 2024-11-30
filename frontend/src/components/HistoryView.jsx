@@ -63,7 +63,7 @@ const HistoryView = () => {
 
   const fetchHistory = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/history');
+      const response = await axios.get('https://flask-alb-1611654522.us-east-2.elb.amazonaws.com/history');
       if (response.data.success) {
         setHistory(response.data.history);
       } else {
